@@ -4,16 +4,21 @@ import org.antlr.v4.gui.TreeViewer;
 import org.antlr.v4.runtime.ANTLRInputStream;
 import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.tree.ParseTree;
+import pt.up.fe.comp.jmm.ast.AJmmVisitor;
+import pt.up.fe.comp.jmm.ast.JmmNode;
 import pt.up.fe.specs.util.SpecsIo;
 import pt.up.fe.specs.util.SpecsLogs;
 import pt.up.fe.specs.util.SpecsSystem;
 import pt.up.fe.comp2024.JavammLexer;
 import pt.up.fe.comp2024.JavammParser;
+import pt.up.fe.comp2024.Ipv4Lexer;
+import pt.up.fe.comp2024.Ipv4Parser;
 
 import java.io.File;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
+
 
 public class Launcher {
 
@@ -38,11 +43,11 @@ public class Launcher {
         // Convert code string into a character stream
         var input = new ANTLRInputStream(code);
         // Transform characters into tokens using the lexer
-        var lex = new JavammLexer(input);
+        var lex = new Ipv4Lexer(input);
         // Wrap lexer around a token stream
         var tokens = new CommonTokenStream(lex);
         // Transform tokens into a parse tree
-        var parser = new JavammParser(tokens);
+        var parser = new Ipv4Parser(tokens);
         ParseTree root = parser.program();
 
 
